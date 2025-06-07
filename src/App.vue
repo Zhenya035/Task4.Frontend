@@ -1,11 +1,11 @@
 <script setup>
-import TheWelcome from './Pages/LoginPage.vue'
+import { useRoute } from "vue-router";
+const route = useRoute()
 </script>
 
 <template>
-
-  <main>
-    <TheWelcome />
+  <main :class="{'page-container': !['/login', '/registration'].includes(route.path)}">
+    <router-view />
   </main>
 </template>
 
