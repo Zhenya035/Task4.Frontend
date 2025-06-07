@@ -34,15 +34,16 @@ onMounted(() => {
         <label for="floatingPassword">Пароль</label>
       </div>
 
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Запомнить
-        </label>
-      </div>
       <div v-if="errorMessage" class="alert alert-danger">
         {{ errorMessage }}
       </div>
+
       <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+
+      <p class="mt-3 text-center">
+        Нет аккаунта?
+        <router-link to="/registration">Зарегистрируйтесь</router-link>
+      </p>
     </form>
   </main>
 </template>

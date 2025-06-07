@@ -1,11 +1,15 @@
 ﻿<template>
   <div class="user-list">
     <div class="toolbar">
-      <button @click="blockUsers" class="btn btn-block">Block</button>
-      <button @click="unblockUsers" class="btn btn-unlock">Unlock</button>
-      <button @click="deleteUsers" class="btn btn-delete">Delete</button>
-      <input type="text" placeholder="Filter" v-model="filterText" />
-      <button @click="logout" class="btn btn-logout">Logout</button>
+      <div class="left-side">
+        <button @click="blockUsers" class="btn btn-block">Block</button>
+        <button @click="unblockUsers" class="btn btn-unblock">Unlock</button>
+        <button @click="deleteUsers" class="btn btn-delete">Delete</button>
+        <input type="text" placeholder="Filter" v-model="filterText" />
+      </div>
+      <div class="right-side">
+        <button @click="logout" class="btn btn-logout">Logout</button>
+      </div>
     </div>
 
     <table class="user-table">
@@ -167,6 +171,7 @@ export default {
 
 .toolbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -184,7 +189,7 @@ export default {
   color: #0d47a1;
 }
 
-.btn-unlock {
+.btn-unblock {
   background-color: #e3f2fd;
   color: #0d47a1;
 }
@@ -192,6 +197,11 @@ export default {
 .btn-delete {
   background-color: #ffcccc;
   color: #c62828;
+}
+
+.btn-logout{
+  background-color: #e3f2fd;
+  color: #0d47a1;
 }
 
 input[type="text"] {

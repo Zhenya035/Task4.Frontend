@@ -17,16 +17,29 @@
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="formData.password">
         <label for="floatingPassword">Пароль</label>
       </div>
-      
+
+      <div v-if="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
       <button class="w-100 btn btn-lg btn-primary" type="submit">Регистрация</button>
+
+      <p class="mt-3 text-center">
+        Уже есть аккаунт?
+        <router-link to="/login">Ввойдите</router-link>
+      </p>
     </form>
   </main>
 </template>
 
 <script setup>
 import userRegistration from "@/composables/userRegistration.js";
+import {ref} from "vue";
 
 const {formData, submitForm} = userRegistration();
+
+const errorMessage = ref(null);
+
 </script>
 
 <style scoped>
