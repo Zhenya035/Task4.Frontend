@@ -18,5 +18,26 @@ export default {
                 Authorization: `Bearer ${sessionStorage.getItem('token')}`
             }
         });
+    },
+    blockUsers(userIds) {
+        return apiClient.post(`users/block`,  userIds, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        });
+    },
+    unblockUsers(userIds) {
+        return apiClient.post(`users/unblock`,  userIds, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        });
+    },
+    deleteUsers(userIds) {
+        return apiClient.post(`users/delete`,  userIds, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        });
     }
 }

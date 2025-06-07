@@ -4,7 +4,7 @@
       <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="Username" v-model="formData.username">
+        <input type="text" class="form-control" id="floatingInput" placeholder="name" v-model="formData.name">
         <label for="floatingInput">Имя</label>
       </div>
 
