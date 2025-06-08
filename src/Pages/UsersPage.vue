@@ -61,7 +61,7 @@ export default {
   computed: {
     filteredUsers() {
       const filter = this.filterText.toLowerCase();
-      return this.users.filter(user => user.name.toLowerCase().includes(filter));
+      return this.users.filter(user => user.email.toLowerCase().includes(filter));
     }
   },
   methods: {
