@@ -95,20 +95,33 @@ export default {
       }
     },
     formatLastLogin(dateStr) {
-      const date = new Date(dateStr);
-      const now = new Date();
+        const date = new Date(dateStr);
+        const now = new Date();
 
-      const diffInSeconds = Math.floor((now - date) / 1000);
+        const diffInSeconds = Math.floor((now - date) / 1000);
 
-      if (diffInSeconds < 60) return `${diffInSeconds} seconds ago`;
-      const diffInMinutes = Math.floor(diffInSeconds / 60);
-      if (diffInMinutes < 60) return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
+        let relativeTime;
 
-      const diffInHours = Math.floor(diffInMinutes / 60);
-      if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+        if (diffInSeconds < 60) {
+          relativeTime = `${diffInSeconds} second${diffInSeconds !== 1 ? 's' : ''} ago`;
+        } else {
+          const diffInMinutes = Math.floor(diffInSeconds / 60);
+          if (diffInMinutes < 60) {
+            relativeTime = `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+          } else {
+            const diffInHours = Math.floor(diffInMinutes / 60);
+            if (diffInHours < 24) {
+              relativeTime = `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+            } else {
+              const diffInDays = Math.floor(diffInHours / 24);
+              relativeTime = `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
+            }
+          }
+        }
 
-      const diffInDays = Math.floor(diffInHours / 24);
-      return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+        const localDate = date.toLocaleString();
+
+        return { relative: relativeTime, full: localDate };
     },
     logout() {
       sessionStorage.removeItem('token');
