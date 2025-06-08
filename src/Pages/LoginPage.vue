@@ -17,7 +17,7 @@ onMounted(() => {
   } else if (error === 'unauthorized') {
     error.value = 'You are unauthorized';
   } else if (errorMessage === 'incorrect status') {
-    error.value = 'You are blocked';
+    error.value = 'You are blocked or deleted';
   }
 });
 </script>
