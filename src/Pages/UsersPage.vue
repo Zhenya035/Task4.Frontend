@@ -95,10 +95,15 @@ export default {
       }
     },
     formatLastLogin(dateStr) {
-        const date = new Date(dateStr);
+        const serverDate = new Date(dateStr);
         const now = new Date();
 
-        const diffInSeconds = Math.floor((now - date) / 1000);
+        console.log('Server time (UTC):', serverDate.toISOString());
+        console.log('Local time:', serverDate.toString());
+        console.log('Now:', now.toString());
+
+        const diffInSeconds = Math.floor((now - serverDate) / 1000);
+        console.log('Difference in seconds:', diffInSeconds);
 
         let relativeTime;
 
