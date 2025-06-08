@@ -2,9 +2,20 @@
   <div class="user-list">
     <div class="toolbar">
       <div class="left-side">
-        <button @click="blockUsers" class="btn btn-block">Block</button>
-        <button @click="unblockUsers" class="btn btn-unblock">Unlock</button>
-        <button @click="deleteUsers" class="btn btn-delete">Delete</button>
+        <button @click="blockUsers" class="btn btn-block">
+          <img src="../components/block.png" class="bi bi-block" title="block">
+          Block
+        </button>
+
+        <button @click="unblockUsers" class="btn btn-unblock" title="Unblock">
+          <img src="../components/unblock.png" class="bi bi-unlock-fill">
+          Unblock
+        </button>
+
+        <button @click="deleteUsers" class="btn btn-delete" title="Delete">
+          <img src="../components/delete.png" class="bi bi-trash-fill">
+          Delete
+        </button>
         <input type="text" placeholder="Filter" v-model="filterText" />
       </div>
       <div class="right-side">
@@ -198,7 +209,7 @@ export default {
 }
 
 .btn {
-  padding: 8px 16px;
+  padding: 8px 8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -250,5 +261,10 @@ input[type="text"] {
 
 .user-table td input[type="checkbox"] {
   margin-right: 10px;
+}
+
+.bi{
+  height: 20px;
+  width: 20px;
 }
 </style>
