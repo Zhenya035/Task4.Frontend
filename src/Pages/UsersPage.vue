@@ -95,38 +95,33 @@ export default {
       }
     },
     formatLastLogin(dateStr) {
-        const serverDate = new Date(dateStr);
-        const now = new Date();
+      const serverDate = new Date(dateStr);
+      const now = new Date();
 
-        console.log('Server time (UTC):', serverDate.toISOString());
-        console.log('Local time:', serverDate.toString());
-        console.log('Now:', now.toString());
+      const diffInSeconds = Math.floor((now - serverDate) / 1000);
 
-        const diffInSeconds = Math.floor((now - serverDate) / 1000);
-        console.log('Difference in seconds:', diffInSeconds);
+      let relativeTime;
 
-        let relativeTime;
-
-        if (diffInSeconds < 60) {
-          relativeTime = `${diffInSeconds} second${diffInSeconds !== 1 ? 's' : ''} ago`;
+      if (diffInSeconds < 60) {
+        relativeTime = `${diffInSeconds} second${diffInSeconds !== 1 ? 's' : ''} ago`;
+      } else {
+        const diffInMinutes = Math.floor(diffInSeconds / 60);
+        if (diffInMinutes < 60) {
+          relativeTime = `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
         } else {
-          const diffInMinutes = Math.floor(diffInSeconds / 60);
-          if (diffInMinutes < 60) {
-            relativeTime = `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+          const diffInHours = Math.floor(diffInMinutes / 60);
+          if (diffInHours < 24) {
+            relativeTime = `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
           } else {
-            const diffInHours = Math.floor(diffInMinutes / 60);
-            if (diffInHours < 24) {
-              relativeTime = `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
-            } else {
-              const diffInDays = Math.floor(diffInHours / 24);
-              relativeTime = `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
-            }
+            const diffInDays = Math.floor(diffInHours / 24);
+            relativeTime = `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
           }
         }
+      }
 
-        const localDate = date.toLocaleString();
+      const localDate = serverDate.toLocaleString();
 
-        return { relative: relativeTime, full: localDate };
+      return { relative: relativeTime, full: localDate };
     },
     logout() {
       sessionStorage.removeItem('token');
