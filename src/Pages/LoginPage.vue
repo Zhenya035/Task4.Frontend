@@ -1,7 +1,7 @@
 ﻿<script setup>
 import userAuthorization from "@/composables/userAuthorization.js";
 
-const {formData, submitForm} = userAuthorization();
+const {formData, submitForm, error} = userAuthorization();
 
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -10,12 +10,14 @@ const route = useRoute();
 const errorMessage = ref(null);
 
 onMounted(() => {
-  const error = route.query.error;
+  const errorMessage = route.query.error;
 
-  if (error === 'blocked') {
-    errorMessage.value = 'Вы заблокированы.';
+  if (errorMessage === 'blocked') {
+    error.value = 'You are block';
   } else if (error === 'unauthorized') {
-    errorMessage.value = 'Ваша сессия истекла. Пожалуйста, войдите снова.';
+    error.value = 'You are unauthorized';
+  } else if (errorMessage === 'incorrect status') {
+    error.value = 'You are blocked';
   }
 });
 </script>
@@ -26,16 +28,16 @@ onMounted(() => {
       <h1 class="h3 mb-3 fw-normal">Вход</h1>
 
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="formData.email">
+        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="formData.email" required>
         <label for="floatingEmail">Электронная почта</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="formData.password">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="formData.password" required>
         <label for="floatingPassword">Пароль</label>
       </div>
 
-      <div v-if="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
+      <div v-if="error" class="alert alert-danger">
+        {{ error }}
       </div>
 
       <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>

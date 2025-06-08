@@ -1,6 +1,7 @@
 ﻿import { ref } from 'vue';
 import authApi from '@/api/api';
 import { useRouter } from 'vue-router';
+import router from "../../router/index.js";
 
 export default function userAuthorization() {
     const formData = ref({
@@ -28,7 +29,11 @@ export default function userAuthorization() {
             await router.push('/users');
         } catch (err) {
             console.error('Ошибка регистрации', err);
-            error.value = err.response?.data?.message || 'Произошла ошибка при регистрации.';
+            if (err.response?.status === 404) {
+                error.value = 'Email or password is incorrect';
+            } else {
+                error.value = err.response?.data?.message || 'Authorization error';
+            }
         } finally {
             loading.value = false;
         }

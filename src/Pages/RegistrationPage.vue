@@ -4,22 +4,22 @@
       <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="name" v-model="formData.name">
+        <input type="text" class="form-control" id="floatingInput" placeholder="name" v-model="formData.name" required>
         <label for="floatingInput">Имя</label>
       </div>
 
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="formData.email">
+        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="formData.email" required>
         <label for="floatingEmail">Электронная почта</label>
       </div>
 
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="formData.password">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="formData.password" required>
         <label for="floatingPassword">Пароль</label>
       </div>
 
-      <div v-if="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
+      <div v-if="error" class="alert alert-danger">
+        {{ error }}
       </div>
 
       <button class="w-100 btn btn-lg btn-primary" type="submit">Регистрация</button>
@@ -34,11 +34,8 @@
 
 <script setup>
 import userRegistration from "@/composables/userRegistration.js";
-import {ref} from "vue";
 
-const {formData, submitForm} = userRegistration();
-
-const errorMessage = ref(null);
+const {formData, submitForm, error} = userRegistration();
 
 </script>
 

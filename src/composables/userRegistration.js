@@ -30,7 +30,7 @@ export default function userRegistration() {
             await router.push('/users');
         } catch (err) {
             console.error('Ошибка регистрации', err);
-            error.value = err.response?.data?.message || 'Произошла ошибка при регистрации.';
+            error.value = err.response?.data?.message || 'Email alredy used';
         } finally {
             loading.value = false;
         }

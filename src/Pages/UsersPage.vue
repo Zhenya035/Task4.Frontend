@@ -120,9 +120,16 @@ export default {
       try {
         await api.blockUsers(selectedIds);
         await this.fetchUsers();
+        this.selectAll = false;
       } catch (error) {
         console.error('Error blocking users:', error);
-        alert('Failed to block users');
+        if(error.response.status === 403) {
+          await router.push({path: '/login',
+            query: {error: 'incorrect status'}});
+        }
+        else{
+          alert('Failed to block users');
+        }
       }
     },
     async unblockUsers() {
@@ -135,9 +142,16 @@ export default {
       try {
         await api.unblockUsers(selectedIds);
         await this.fetchUsers();
+        this.selectAll = false;
       } catch (error) {
-        console.error('Error blocking users:', error);
-        alert('Failed to block users');
+        console.error('Error unblocking users:', error);
+        if(error.response.status === 403) {
+          await router.push({path: '/login',
+            query: {error: 'incorrect status'}});
+        }
+        else{
+          alert('Failed to unblock users');
+        }
       }
     },
     async deleteUsers() {
@@ -150,9 +164,16 @@ export default {
       try {
         await api.deleteUsers(selectedIds);
         await this.fetchUsers();
+        this.selectAll = false;
       } catch (error) {
-        console.error('Error blocking users:', error);
-        alert('Failed to block users');
+        console.error('Error deleting users:', error);
+        if(error.response.status === 403) {
+          await router.push({path: '/login',
+            query: {error: 'incorrect status'}});
+        }
+        else{
+          alert('Failed to delete users');
+        }
       }
     }
   },
