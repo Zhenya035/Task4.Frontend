@@ -1,7 +1,7 @@
 ﻿<template>
   <main class="form-signin">
     <form @submit.prevent="submitForm">
-      <h1 class="h3 mb-3 fw-normal">Sign out</h1>
+      <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
       <div class="form-floating">
         <input type="text" class="form-control" id="floatingInput" placeholder="name" v-model="formData.name" required>
@@ -22,11 +22,11 @@
         {{ error }}
       </div>
 
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Регистрация</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
       <p class="mt-3 text-center">
         Are there already account?
-        <router-link to="/login">Sign in</router-link>
+        <router-link to="/login">Sign on</router-link>
       </p>
     </form>
   </main>

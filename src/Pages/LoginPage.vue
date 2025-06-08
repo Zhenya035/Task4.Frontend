@@ -24,7 +24,7 @@ onMounted(() => {
 <template>
   <main class="form-signin">
     <form @submit.prevent="submitForm">
-      <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+      <h1 class="h3 mb-3 fw-normal">Sign on</h1>
 
       <div class="form-floating">
         <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="formData.email" required>
@@ -39,11 +39,11 @@ onMounted(() => {
         {{ error }}
       </div>
 
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign on</button>
 
       <p class="mt-3 text-center">
         No account?
-        <router-link to="/registration">Sign out</router-link>
+        <router-link to="/registration">Sign in</router-link>
       </p>
     </form>
   </main>
