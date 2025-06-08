@@ -95,6 +95,11 @@ export default {
       }
     },
     formatLastLogin(dateStr) {
+      if (!dateStr.endsWith('Z')) {
+        console.warn('Warning: Date string does not end with "Z". Assuming UTC.');
+        dateStr += 'Z';
+      }
+
       const serverDate = new Date(dateStr);
       const now = new Date();
 
@@ -119,9 +124,7 @@ export default {
         }
       }
 
-      const localDate = serverDate.toLocaleString();
-
-      return { relative: relativeTime, full: localDate };
+      return relativeTime;
     },
     logout() {
       sessionStorage.removeItem('token');
