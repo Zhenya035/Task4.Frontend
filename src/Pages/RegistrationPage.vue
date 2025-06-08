@@ -1,21 +1,21 @@
 ﻿<template>
   <main class="form-signin">
     <form @submit.prevent="submitForm">
-      <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+      <h1 class="h3 mb-3 fw-normal">Sign out</h1>
 
       <div class="form-floating">
         <input type="text" class="form-control" id="floatingInput" placeholder="name" v-model="formData.name" required>
-        <label for="floatingInput">Имя</label>
+        <label for="floatingInput">Name</label>
       </div>
 
       <div class="form-floating">
         <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="formData.email" required>
-        <label for="floatingEmail">Электронная почта</label>
+        <label for="floatingEmail">Email</label>
       </div>
 
       <div class="form-floating">
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="formData.password" required>
-        <label for="floatingPassword">Пароль</label>
+        <label for="floatingPassword">Password</label>
       </div>
 
       <div v-if="error" class="alert alert-danger">
@@ -25,8 +25,8 @@
       <button class="w-100 btn btn-lg btn-primary" type="submit">Регистрация</button>
 
       <p class="mt-3 text-center">
-        Уже есть аккаунт?
-        <router-link to="/login">Ввойдите</router-link>
+        Are there already account?
+        <router-link to="/login">Sign in</router-link>
       </p>
     </form>
   </main>

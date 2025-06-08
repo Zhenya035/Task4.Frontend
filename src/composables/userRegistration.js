@@ -20,7 +20,7 @@ export default function userRegistration() {
 
         try {
             const response = await authApi.register(formData.value);
-            console.log('Успех:', response.data);
+            console.log('Success:', response.data);
 
             const {userId, token} = response.data;
 
@@ -29,8 +29,8 @@ export default function userRegistration() {
 
             await router.push('/users');
         } catch (err) {
-            console.error('Ошибка регистрации', err);
-            error.value = err.response?.data?.message || 'Email alredy used';
+            console.error('Registration error', err);
+            error.value = err.response?.data?.message || 'Email already used';
         } finally {
             loading.value = false;
         }

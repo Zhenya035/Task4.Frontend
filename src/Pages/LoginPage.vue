@@ -7,7 +7,6 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const errorMessage = ref(null);
 
 onMounted(() => {
   const errorMessage = route.query.error;
@@ -25,26 +24,26 @@ onMounted(() => {
 <template>
   <main class="form-signin">
     <form @submit.prevent="submitForm">
-      <h1 class="h3 mb-3 fw-normal">Вход</h1>
+      <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
       <div class="form-floating">
         <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="formData.email" required>
-        <label for="floatingEmail">Электронная почта</label>
+        <label for="floatingEmail">Email</label>
       </div>
       <div class="form-floating">
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="formData.password" required>
-        <label for="floatingPassword">Пароль</label>
+        <label for="floatingPassword">Password</label>
       </div>
 
       <div v-if="error" class="alert alert-danger">
         {{ error }}
       </div>
 
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
       <p class="mt-3 text-center">
-        Нет аккаунта?
-        <router-link to="/registration">Зарегистрируйтесь</router-link>
+        No account?
+        <router-link to="/registration">Sign out</router-link>
       </p>
     </form>
   </main>

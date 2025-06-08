@@ -28,7 +28,7 @@ export default function userAuthorization() {
 
             await router.push('/users');
         } catch (err) {
-            console.error('Ошибка регистрации', err);
+            console.error('Authorization error', err);
             if (err.response?.status === 404) {
                 error.value = 'Email or password is incorrect';
             } else {
