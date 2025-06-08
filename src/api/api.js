@@ -1,7 +1,7 @@
 ﻿import axios from 'axios';
 
 export const apiClient = axios.create({
-    baseURL: 'http://localhost:5165',
+    baseURL: 'https://task4.somee.com',
     timeout: 5000,
 });
 
